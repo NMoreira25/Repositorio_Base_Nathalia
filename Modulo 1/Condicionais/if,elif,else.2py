@@ -1,0 +1,16 @@
+opçao = 10 
+while opçao!=4: 
+    opçao = int(input("digite oq deseja realizar: n\1-fazer o pix n\2-extrato n\3-depositar n\4-sair "))
+    if opçao == 1: 
+        valor = input("digite o valor mandado: ")
+        pessoa =input("digite quem vai receber o pix:")
+        print ("transferencia feita!!")
+    elif opçao ==2: 
+        saldo = input("digite o saldo do banco: ")
+        print(" valor => 0.0 tranferencia aceita")
+    elif opçao ==3: 
+        depositar = input("digite o valor para guardar o dinheiro: ")
+        print("dinheiro guardado ")
+    else: 
+        sair = input(" digite o valor que vai sair da conta: ")
+        print(" o dinheiro saiu")
