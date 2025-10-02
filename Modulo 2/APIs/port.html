@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
@@ -98,58 +98,91 @@
       margin: 0 auto;
     }
 
-    .projetos {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    /* Ajuste da seção Sobre para layout com GIF */
+    #sobre .container {
+      display: flex;
+      align-items: center;
       gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    #sobre .texto-sobre {
+      flex: 1;
+      min-width: 280px;
+    }
+
+    #sobre .gif-sobre {
+      flex: 1;
+      min-width: 280px;
+      text-align: center;
+    }
+
+    #sobre img {
+      max-width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 0 15px #00f0ff;
+    }
+
+    /* Projetos - grid e cards */
+    .projetos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+      gap: 24px;
       margin-top: 20px;
     }
 
-    .projeto {
+    .projeto-card {
       background: #1a1a1a;
-      padding: 20px;
-      border-radius: 8px;
+      border-radius: 12px;
       box-shadow: 0 0 15px #9b59b6;
       color: #9b59b6;
-      text-shadow: 0 0 8px #9b59b6;
-      transition: box-shadow 0.3s ease, transform 0.3s ease;
-      animation: fadeInUp 1.5s ease forwards;
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
-    .projeto:hover {
-      box-shadow: 0 0 25px #00f0ff;
-      color: #00f0ff;
-      text-shadow: 0 0 12px #00f0ff;
+    .projeto-card:hover {
       transform: scale(1.05);
-    }
-
-    .projeto h3 {
-      margin-bottom: 10px;
+      box-shadow: 0 0 30px #00f0ff, 0 0 40px #00f0ff;
       color: #00f0ff;
       text-shadow: 0 0 15px #00f0ff;
     }
 
-    #contato ul {
-      list-style: none;
-      text-align: center;
-      margin-top: 15px;
-      margin-bottom: 20px;
+    .projeto-card img {
+      width: 120px;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      box-shadow: 0 0 15px #00f0ff;
+      pointer-events: none;
     }
 
-    #contato ul li {
-      margin: 5px 0;
+    .projeto-card h3 {
+      margin-bottom: 12px;
     }
 
-    #contato a {
-      color: #9b59b6;
-      text-decoration: none;
-      transition: color 0.3s ease, text-shadow 0.3s ease;
-      text-shadow: 0 0 5px #9b59b6;
-    }
-
-    #contato a:hover {
+    .btn-projeto {
+      background-color: transparent;
       color: #00f0ff;
-      text-shadow: 0 0 12px #00f0ff, 0 0 25px #00f0ff;
+      border: 2px solid #00f0ff;
+      padding: 10px 24px;
+      border-radius: 30px;
+      font-weight: bold;
+      text-decoration: none;
+      box-shadow: 0 0 10px #00f0ff, 0 0 20px #00f0ff;
+      text-shadow: 0 0 8px #00f0ff;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      user-select: none;
+      margin-top: auto;
+    }
+
+    .btn-projeto:hover {
+      background-color: #00f0ff;
+      color: #0d0d0d;
+      box-shadow: 0 0 25px #00f0ff, 0 0 40px #00f0ff;
     }
 
     /* Botões neon azul */
@@ -181,6 +214,31 @@
       transform: scale(1.1);
     }
 
+    /* Contato */
+    #contato ul {
+      list-style: none;
+      text-align: center;
+      margin-top: 15px;
+      margin-bottom: 20px;
+    }
+
+    #contato ul li {
+      margin: 5px 0;
+    }
+
+    #contato a {
+      color: #9b59b6;
+      text-decoration: none;
+      transition: color 0.3s ease, text-shadow 0.3s ease;
+      text-shadow: 0 0 5px #9b59b6;
+    }
+
+    #contato a:hover {
+      color: #00f0ff;
+      text-shadow: 0 0 12px #00f0ff, 0 0 25px #00f0ff;
+    }
+
+    /* Rodapé */
     footer {
       background-color: #1a1a1a;
       color: #9b59b6;
@@ -190,6 +248,14 @@
       box-shadow: 0 0 10px #8e44ad;
       text-shadow: 0 0 5px #9b59b6;
       animation: fadeInUp 1s ease forwards;
+      position: relative;
+    }
+
+    footer img {
+      width: 50px;
+      position: absolute;
+      right: 20px;
+      top: 10px;
     }
 
     @media (max-width: 600px) {
@@ -201,29 +267,42 @@
       nav ul li {
         margin: 8px 0;
       }
-      .btn-neon {
-        margin: 10px 5px;
-        width: 80%;
+      .container {
+        width: 95%;
+      }
+
+      #sobre .container {
+        flex-direction: column;
       }
     }
 
     /* Animações */
 
     @keyframes neonGlow {
-      from {
-        text-shadow: 0 0 10px #00f0ff, 0 0 20px #00f0ff;
+      0% {
+        text-shadow:
+          0 0 5px #00f0ff,
+          0 0 10px #00f0ff,
+          0 0 20px #00f0ff,
+          0 0 40px #00f0ff;
       }
-      to {
-        text-shadow: 0 0 20px #00f0ff, 0 0 40px #00f0ff;
+      100% {
+        text-shadow:
+          0 0 15px #00f0ff,
+          0 0 30px #00f0ff,
+          0 0 45px #00f0ff,
+          0 0 60px #00f0ff;
       }
     }
 
     @keyframes neonPulse {
-      from {
+      0% {
         box-shadow: 0 0 10px #00f0ff, 0 0 20px #00f0ff;
+        text-shadow: 0 0 8px #00f0ff;
       }
-      to {
+      100% {
         box-shadow: 0 0 25px #00f0ff, 0 0 40px #00f0ff;
+        text-shadow: 0 0 20px #00f0ff;
       }
     }
 
@@ -248,10 +327,10 @@
         transform: translateY(0);
       }
     }
-
   </style>
 </head>
 <body>
+
   <header>
     <div class="container">
       <h1>Nathalia Moreira Monteiro</h1>
@@ -265,81 +344,74 @@
     </div>
   </header>
 
-  <section id="sobre">
-    <div class="container">
-      <h2>Sobre Mim</h2>
-      <p>Olá! Meu nome é Nathalia Moreira Monteiro. Sou uma estudante apaixonada por tecnologia, criatividade e desafios. Atualmente estou explorando o universo da programação e me desenvolvendo como futura desenvolvedora na Fábrica de Programadores. Gosto de aprender coisas novas, resolver problemas e transformar ideias em soluções digitais. Estou apenas começando, mas com muita vontade de crescer e construir projetos incríveis!</p>
-    </div>
-  </section>
-
-  <section id="projetos">
-    <div class="container">
-      <h2>Projetos</h2>
-      <div class="projetos">
-        <div class="projeto">
-          <h3>Em Breve</h3>
-          <p>Atualmente estou cursando o programa de formação em programação pela <strong>Fábrica de Programadores</strong>. Em breve, meus projetos estarão aqui! Fique de olho! 👀</p>
+  <main>
+    <section id="sobre" class="visible">
+      <div class="container">
+        <div class="texto-sobre">
+          <h2>Sobre mim</h2>
+          <p>
+            Atualmente estou cursando o programa de formação em programação pela <strong>Fábrica de Programadores</strong>. Em breve, meus projetos estarão aqui! Fique de olho! 👀 meu professor é o Ricardo, ele é top e eu amo ele, o melhor de todos 😁😎😁
+          </p>
+        </div>
+        <div class="gif-sobre">
+          <img src="https://tenor.com/pt-BR/view/estudar-concentra%C3%A7ao-bart-estudo-ossimpsons-gif-17966923" alt="Gif sobre Nathalia" />
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="contato">
-    <div class="container">
-      <h2>Contato</h2>
-      <p>Entre em contato comigo pelo email ou GitHub abaixo:</p>
-      <ul>
-        <li>Email: <a href="mailto:nathalia.moreira74@icloud.com">nathalia.moreira74@icloud.com</a></li>
-        <li>GitHub: <a href="https://github.com/NMoreira25?tab=stars" target="_blank" rel="noopener noreferrer">github.com/NMoreira25</a></li>
-      </ul>
-      <div style="text-align:center; margin-top: 20px;">
-        <a href="https://github.com/NMoreira25?tab=stars" target="_blank" rel="noopener noreferrer" class="btn-neon" aria-label="Visitar GitHub de Nathalia">GitHub</a>
-        <a href="mailto:nathalia.moreira74@icloud.com" class="btn-neon" aria-label="Enviar email para Nathalia">Enviar Email</a>
+    <section id="projetos" class="visible">
+      <div class="container">
+        <h2>Meus Projetos</h2>
+        <div class="projetos-grid">
+          <div class="projeto-card">
+            <img src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif" alt="Projeto Multi Funções" />
+            <h3>Projeto Multi Funções</h3>
+            <a href="https://github.com/NMoreira25/projetomulti_fun-oes.py" target="_blank" rel="noopener noreferrer" class="btn-projeto">Ver no GitHub</a>
+          </div>
+          <div class="projeto-card">
+            <img src="https://tenor.com/pt-BR/view/controller-grass-gif-10039060118619595650" alt="Projeto Pygame" />
+            <h3>Projeto Pygame</h3>
+            <a href="https://github.com/NMoreira25/pygame.py" target="_blank" rel="noopener noreferrer" class="btn-projeto">Ver no GitHub</a>
+          </div>
+          <div class="projeto-card">
+            <img src="https://media.giphy.com/media/3o6ZtaO9BZHcOjmErm/giphy.gif" alt="Projeto Automação" />
+            <h3>Projeto Automação</h3>
+            <a href="https://github.com/NMoreira25/altoma-o.py" target="_blank" rel="noopener noreferrer" class="btn-projeto">Ver no GitHub</a>
+          </div>
+        </div>
+        <div class="contato-botoes" style="text-align:center; margin-top: 40px;">
+          <a href="https://github.com/NMoreira25" target="_blank" rel="noopener noreferrer" class="btn-neon">Meu GitHub</a>
+          <a href="mailto:nathalia.moreira74@iclou.com" class="btn-neon">Enviar Email</a>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+
+    <section id="contato" class="visible">
+      <div class="container">
+        <h2>Contato</h2>
+        <ul>
+          <li>Email: <a href="mailto:nathalia.moreira74@iclou.com">nathalia.moreira74@iclou.com</a></li>
+          <li>GitHub: <a href="https://github.com/NMoreira25" target="_blank" rel="noopener noreferrer">https://github.com/NMoreira25</a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
 
   <footer>
-    <div class="container">
-      <p>&copy; 2025 Nathalia Moreira Monteiro. Todos os direitos reservados.</p>
-    </div>
+    <p>© 2025 Nathalia Moreira Monteiro</p>
   </footer>
 
   <script>
-    // Função para adicionar a classe "visible" nas seções, criando efeito fade-in com zoom suave
-    function revealSections() {
+    // Exibir seções com animação ao carregar
+    window.addEventListener('load', () => {
       const sections = document.querySelectorAll('section');
       sections.forEach(section => {
-        const sectionTop = section.getBoundingClientRect().top;
-        const windowHeight = window.innerHeight;
-        if (sectionTop < windowHeight - 100) {
-          section.classList.add('visible');
-        }
-      });
-    }
-
-    // Ao carregar a página
-    window.addEventListener('load', revealSections);
-
-    // Ao rolar a página
-    window.addEventListener('scroll', revealSections);
-
-    // Scroll suave para os links do menu
-    document.querySelectorAll('nav ul li a').forEach(link => {
-      link.addEventListener('click', e => {
-        e.preventDefault();
-        const targetId = link.getAttribute('href').substring(1);
-        const targetSection = document.getElementById(targetId);
-        if (targetSection) {
-          window.scrollTo({
-            top: targetSection.offsetTop - 60,
-            behavior: 'smooth'
-          });
-        }
+        section.classList.add('visible');
       });
     });
   </script>
 </body>
 </html>
+
 
 
